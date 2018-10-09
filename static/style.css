@@ -1,0 +1,10 @@
+.form{
+    width:40%;
+    height:600px;
+    border: 2px solid black;
+    margin-left: 30%;
+    text-align: center;
+}
+textarea{
+    margin-top: 15px;
+}

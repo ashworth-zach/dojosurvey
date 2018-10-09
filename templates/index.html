@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='./style.css') }}">
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="jumbotron text-center">
+        <h1>DOJO SURVEY WITH VALIDATION</h1>
+    </header>
+    <div class="form">
+        <form action="/process" method="post">
+            <p>your name:</p>
+            {% with errors = get_flashed_messages(category_filter=["errorname"]) %}
+            {% if errors %}
+  
+                {% for msg in errors %}
+                <li>{{ msg }}</li>
+                {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+            <input type="text" name="firstname" value="">
+
+
+            <p>dojo Location:</p>
+
+            <select name='location'>
+                <option value='tulsa'>tulsa</option>
+                <option value='seattle'>seattle</option>
+                <option value='san jose'>san jose</option>
+                <option value='idk'>idk other locations tbh</option>
+            </select>
+
+
+            <p>favorite language:</p>
+            <select name='language'>
+                <option value='python'>python</option>
+                <option value='javascript'>javacript</option>
+                <option value='css'>css</option>
+                <option value='html'>html</option>
+                <option value='angular'>angular</option>
+                <option value='ruby'>ruby</option>
+                <option value='mysql'>mysql</option>
+            </select><br>
+            {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+  
+                {% for msg in errors %}
+                <li>{{ msg }}</li>
+                {% endfor %}
+
+            {% endif %}
+            {% endwith %}
+            <textarea name="message" rows="5" cols="30"></textarea><br>
+            <input type='submit' value='Submit'>
+        </form>
+    </div>
+</body>
+
+</html>
